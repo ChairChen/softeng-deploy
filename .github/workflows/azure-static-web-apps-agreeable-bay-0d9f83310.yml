@@ -11,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
+      - name: Set User Configurations
+        run: |
+          git config --global user.name "ChairChen"
+          git config --global user.email "benbeneeg@gmail.com"
+          chmod -R 777 .
+      - name: Disable CI
+        run: echo "CI=false" >> &GITHUB_ENV
+        
       - uses: actions/checkout@v3
         with:
           submodules: true
@@ -26,7 +34,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
-          output_location: "/build" # Built app content directory - optional
+          output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
