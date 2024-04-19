@@ -11,14 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      # - name: Set User Configurations
-      #   run: |
-      #     git config --global user.name "ChairChen"
-      #     git config --global user.email "benbeneeg@gmail.com"
-      #     chmod -R 777 .
-      - name: Change Ownership of .git Dir
+      - name: Set User Configurations
         run: |
-          sudo chown -R $USER:$USER .git/
+          git config --global user.name "ChairChen"
+          git config --global user.email "benbeneeg@gmail.com"
+          chmod -R 777 .
       - name: Disable CI
         run: echo "CI=false" >> $GITHUB_ENV
 
